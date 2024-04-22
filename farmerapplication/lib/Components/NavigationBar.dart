@@ -1,3 +1,4 @@
+import 'package:farmerapplication/Components/Colorpallet.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -10,13 +11,13 @@ class CustomBottomNavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-      fixedColor: Colors.green,
+      fixedColor: ColorPalette.button_color,
       backgroundColor: Colors.blue,
       selectedIconTheme: IconThemeData(color: Colors.green),
       unselectedIconTheme: IconThemeData(color: Colors.black),
       currentIndex: currentIndex,
       onTap: onTap,
-      items: [
+      items: const [
         BottomNavigationBarItem(
           icon: Icon(Icons.home),
           label: 'Home',

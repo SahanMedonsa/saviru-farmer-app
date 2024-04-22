@@ -1,12 +1,21 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:farmerapplication/Components/Colorpallet.dart';
 import 'package:farmerapplication/Components/NavigationBar.dart';
 import 'package:farmerapplication/Pages/Blog.dart';
 import 'package:farmerapplication/Pages/Home.dart';
 import 'package:farmerapplication/Pages/Profile.dart';
 import 'package:farmerapplication/Pages/VegeState.dart';
+import 'package:farmerapplication/firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  FirebaseFirestore.instance.settings =
+      const Settings(persistenceEnabled: true);
   runApp(const MyApp());
 }
 
