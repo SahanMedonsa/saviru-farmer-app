@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:farmerapplication/Components/Colorpallet.dart';
 import 'package:farmerapplication/Services/Blog_database_service.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -17,6 +18,7 @@ class _BlogScreenState extends State<BlogScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: ColorPalette.forest_Green.withOpacity(0.2),
       appBar: AppBar(
         title: const Text('Blog'),
       ),
