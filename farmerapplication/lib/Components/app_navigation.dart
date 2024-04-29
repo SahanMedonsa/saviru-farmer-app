@@ -63,6 +63,7 @@ class AppNavigation {
               builder: (context, state) {
                 return VegeStatScreen(
                   key: state.pageKey,
+                  data: {},
                 );
               },
             )

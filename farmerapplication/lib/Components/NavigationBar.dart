@@ -23,7 +23,9 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
   int _currentIndex = 0;
 
   final List<Widget> _screens = [
-    VegeStatScreen(),
+    VegeStatScreen(
+      data: {},
+    ),
     BlogScreen(),
     LoginPage(),
   ];

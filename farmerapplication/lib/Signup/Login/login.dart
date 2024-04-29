@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:farmerapplication/Components/Colorpallet.dart';
 import 'package:farmerapplication/Components/Gtext.dart';
@@ -278,10 +279,15 @@ class _LoginPageState extends State<LoginPage> {
   void _signInWithEmailAndPassword() async {
     if (_formKey.currentState?.validate() ?? false) {
       try {
-        await FirebaseAuth.instance.signInWithEmailAndPassword(
+        UserCredential userCredential =
+            await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: _usernameController.text,
           password: _passwordController.text,
         );
+
+        FirebaseFirestore.instance
+            .collection('farmer')
+            .doc(userCredential.user!.email);
 
         // If login is successful, navigate to the Home page
         context.goNamed("Profile");
