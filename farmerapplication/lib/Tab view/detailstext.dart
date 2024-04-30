@@ -12,36 +12,39 @@ class detailtext extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          //details
-          Container(
-            width: width * 0.25,
-            child: Gtext(
-                text: ("$detail"),
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            //details
+            Container(
+              width: width * 0.3,
+              child: Gtext(
+                  text: ("$detail"),
+                  tsize: 16,
+                  tcolor: Colors.black,
+                  fweight: FontWeight.w700),
+            ),
+
+            //
+            Container(
+              child: Gtext(
+                  text: (" :   "),
+                  tsize: 16,
+                  tcolor: Colors.black,
+                  fweight: FontWeight.w600),
+            ),
+
+            //farmere details
+            Gtext(
+                text: db_datil,
                 tsize: 16,
                 tcolor: Colors.black,
-                fweight: FontWeight.w500),
-          ),
-
-          //
-          Container(
-            child: Gtext(
-                text: (" :   "),
-                tsize: 16,
-                tcolor: Colors.black,
-                fweight: FontWeight.w500),
-          ),
-
-          //farmere details
-          Gtext(
-              text: db_datil,
-              tsize: 16,
-              tcolor: Colors.black,
-              fweight: FontWeight.w500)
-        ],
+                fweight: FontWeight.w500)
+          ],
+        ),
       ),
     );
   }

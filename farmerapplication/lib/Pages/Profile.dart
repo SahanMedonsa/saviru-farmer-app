@@ -4,7 +4,7 @@ import 'package:farmerapplication/Tab%20view/collection.dart';
 import 'package:farmerapplication/Tab%20view/farmerpersonaldetail.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 class Profilescreen extends StatefulWidget {
   const Profilescreen({super.key});
@@ -14,10 +14,6 @@ class Profilescreen extends StatefulWidget {
 }
 
 final List<String> fileNames = ['File 1', 'File 2', 'File 3'];
-
-void SignOut() {
-  FirebaseAuth.instance.signOut();
-}
 
 class _ProfilescreenState extends State<Profilescreen> {
   @override
@@ -30,8 +26,9 @@ class _ProfilescreenState extends State<Profilescreen> {
           title: Text(
             'Profile',
           ),
+          automaticallyImplyLeading: false,
           actions: [
-            IconButton(onPressed: SignOut, icon: Icon(Icons.logout_outlined))
+            IconButton(onPressed: signOut, icon: Icon(Icons.logout_outlined))
           ],
         ),
         body: DefaultTabController(
@@ -69,5 +66,15 @@ class _ProfilescreenState extends State<Profilescreen> {
         ),
       ),
     );
+  }
+
+  void signOut() async {
+    try {
+      await FirebaseAuth.instance.signOut();
+      context.goNamed("Login");
+      print("User signed out successfully");
+    } catch (e) {
+      print("Error signing out: $e");
+    }
   }
 }
