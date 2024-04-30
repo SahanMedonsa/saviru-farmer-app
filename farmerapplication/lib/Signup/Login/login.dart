@@ -291,6 +291,9 @@ class _LoginPageState extends State<LoginPage> {
 
         // If login is successful, navigate to the Home page
         context.goNamed("Profile");
+
+        _usernameController.clear();
+        _passwordController.clear();
       } on FirebaseAuthException catch (e) {
         // Handle sign-in errors
         String errorMessage = e.message ?? 'An error occurred';

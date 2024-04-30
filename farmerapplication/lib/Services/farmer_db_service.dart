@@ -9,6 +9,7 @@ class FarmerDatabaseServices {
   final _firestore = FirebaseFirestore.instance;
   late final CollectionReference _faremerRef;
   String? get email => FirebaseAuth.instance.currentUser?.email;
+
 //json  withconverter
   FarmerDatabaseServices() {
     _faremerRef = _firestore

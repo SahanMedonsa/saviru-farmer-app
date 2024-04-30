@@ -1,7 +1,6 @@
 import 'package:farmerapplication/Components/NavigationBar.dart';
 import 'package:farmerapplication/Signup/Login/login.dart';
 import 'package:flutter/widgets.dart';
-import 'package:get/get_navigation/get_navigation.dart';
 import 'package:go_router/go_router.dart';
 import 'package:farmerapplication/Pages/Blog.dart';
 import 'package:farmerapplication/Pages/Home.dart';
@@ -103,7 +102,7 @@ class AppNavigation {
                       );
                     },
                   )
-                ])
+                ]),
           ])
         ],
       )
