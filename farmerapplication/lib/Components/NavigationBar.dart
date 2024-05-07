@@ -1,7 +1,6 @@
 import 'package:farmerapplication/Components/Colorpallet.dart';
 import 'package:flutter/material.dart';
 import 'package:farmerapplication/Pages/Blog.dart';
-import 'package:farmerapplication/Pages/Home.dart';
 import 'package:farmerapplication/Pages/VegeState.dart';
 import 'package:farmerapplication/Signup/Login/login.dart';
 import 'package:go_router/go_router.dart';
@@ -70,7 +69,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
           ),
           BarItem(
             icon: Icons.newspaper,
-            title: 'Blog',
+            title: 'Information',
           ),
           BarItem(
             icon: Icons.person,

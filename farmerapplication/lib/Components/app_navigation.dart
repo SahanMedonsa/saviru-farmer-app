@@ -1,8 +1,10 @@
 import 'package:farmerapplication/Components/NavigationBar.dart';
+import 'package:farmerapplication/Pages/infomation.dart';
 import 'package:farmerapplication/Signup/Login/login.dart';
+import 'package:farmerapplication/fertilizer/Alertdialogbox.dart';
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
-import 'package:farmerapplication/Pages/Blog.dart';
+
 import 'package:farmerapplication/Pages/Home.dart';
 import 'package:farmerapplication/Pages/Profile.dart';
 import 'package:farmerapplication/Pages/VegeState.dart';
@@ -22,7 +24,7 @@ class AppNavigation {
       GlobalKey<NavigatorState>(debugLabel: 'shellvege');
 
   static final GlobalKey<NavigatorState> _rootNavigationBlog =
-      GlobalKey<NavigatorState>(debugLabel: 'shellBlog');
+      GlobalKey<NavigatorState>(debugLabel: 'shellinfor');
 
   static final GlobalKey<NavigatorState> _rootNavigationlogin =
       GlobalKey<NavigatorState>(debugLabel: 'shelllogin');
@@ -71,14 +73,24 @@ class AppNavigation {
           //blog
           StatefulShellBranch(navigatorKey: _rootNavigationBlog, routes: [
             GoRoute(
-              path: '/blog',
-              name: 'Blog',
-              builder: (context, state) {
-                return BlogScreen(
-                  key: state.pageKey,
-                );
-              },
-            )
+                path: '/info',
+                name: 'Info',
+                builder: (context, state) {
+                  return infomationpage(
+                    key: state.pageKey,
+                  );
+                },
+                routes: [
+                  GoRoute(
+                    path: 'vegedetails',
+                    name: 'vegedetails',
+                    builder: (context, state) {
+                      return vegedetail(
+                        key: state.pageKey,
+                      );
+                    },
+                  )
+                ]),
           ]),
 
           //Login

@@ -19,9 +19,6 @@ class _BlogScreenState extends State<BlogScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorPalette.forest_Green.withOpacity(0.2),
-      appBar: AppBar(
-        title: const Text('Blog'),
-      ),
       body: StreamBuilder<QuerySnapshot<Blog>>(
         stream: _databaseServices.getBlogs(),
         builder: (context, snapshot) {
@@ -37,52 +34,55 @@ class _BlogScreenState extends State<BlogScreen> {
             return Center(child: Text('No New Blog'));
           }
 
-          return ListView.builder(
-            itemCount: blogs.length,
-            itemBuilder: (context, index) {
-              Blog blog = blogs[index].data();
-              String blogID = blogs[index].id;
-              return Card(
-                child: ExpansionTile(
-                  title: Text(
-                    blog.Title,
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  subtitle: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          return Padding(
+            padding: const EdgeInsets.only(top: 10),
+            child: ListView.builder(
+              itemCount: blogs.length,
+              itemBuilder: (context, index) {
+                Blog blog = blogs[index].data();
+
+                return Card(
+                  child: ExpansionTile(
+                    title: Text(
+                      blog.Title,
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    subtitle: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(blog.Subtitle),
+                        Text(DateFormat("dd-MM-yyyy h:mm a")
+                            .format(blog.createdOn.toDate())),
+                      ],
+                    ),
                     children: [
-                      Text(blog.Subtitle),
-                      Text(DateFormat("dd-MM-yyyy h:mm a")
-                          .format(blog.createdOn.toDate())),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          children: [
+                            Text(
+                              blog.Title,
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              blog.Description,
+                              textAlign: TextAlign.left,
+                              style: TextStyle(
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ],
+                        ),
+                      )
                     ],
                   ),
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        children: [
-                          Text(
-                            blog.Title,
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            blog.Description,
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-              );
-            },
+                );
+              },
+            ),
           );
         },
       ),

@@ -115,12 +115,4 @@ class Farmer {
       'profite1kg': profit1kg,
     };
   }
-
-  Map<String, dynamic> dailyCrop(String amount, String type) {
-    var amountDouble = double.parse(amount);
-    return {
-      'amount': amountDouble,
-      'type': type,
-    };
-  }
 }

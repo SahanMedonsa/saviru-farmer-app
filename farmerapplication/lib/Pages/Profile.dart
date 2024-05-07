@@ -57,7 +57,7 @@ class _ProfilescreenState extends State<Profilescreen> {
                     // Contents of Tab 1
                     income(),
                     // Contents of Tab 2
-                    dailycollection(),
+                    DailyCollection(),
                     // Contents of Tab 3
                     FarmerPersonalDetails()
                   ],
