@@ -18,8 +18,10 @@ final List<String> fileNames = ['File 1', 'File 2', 'File 3'];
 class _ProfilescreenState extends State<Profilescreen> {
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: fileNames.length,
+    return WillPopScope(
+      onWillPop: () async {
+        return false;
+      },
       child: Scaffold(
         backgroundColor: ColorPalette.forest_Green.withOpacity(0.2),
         appBar: AppBar(
@@ -55,7 +57,7 @@ class _ProfilescreenState extends State<Profilescreen> {
                     // Contents of Tab 1
                     income(),
                     // Contents of Tab 2
-                    dailycollection(),
+                    DailyCollection(),
                     // Contents of Tab 3
                     FarmerPersonalDetails()
                   ],

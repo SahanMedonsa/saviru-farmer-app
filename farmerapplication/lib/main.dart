@@ -1,23 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:farmerapplication/Components/Colorpallet.dart';
-import 'package:farmerapplication/Components/NavigationBar.dart';
 import 'package:farmerapplication/Components/app_navigation.dart';
-import 'package:farmerapplication/Pages/Blog.dart';
-import 'package:farmerapplication/Pages/Home.dart';
-import 'package:farmerapplication/Pages/Profile.dart';
-import 'package:farmerapplication/Pages/VegeState.dart';
-import 'package:farmerapplication/Signup/Login/login.dart';
-import 'package:farmerapplication/Signup/Splashscree.dart';
-import 'package:farmerapplication/Signup/auth/authentication_repo.dart';
 import 'package:farmerapplication/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 Future<void> main() async {
   //widget buinding
-  final WidgetsBinding widgetsBinding =
-      WidgetsFlutterBinding.ensureInitialized();
-
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );

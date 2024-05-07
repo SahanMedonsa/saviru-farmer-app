@@ -9,7 +9,7 @@ class detailtext extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
+    // double height = MediaQuery.of(context).size.height;
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
       child: SingleChildScrollView(
@@ -20,7 +20,7 @@ class detailtext extends StatelessWidget {
           children: [
             //details
             Container(
-              width: width * 0.3,
+              width: width * 0.4,
               child: Gtext(
                   text: ("$detail"),
                   tsize: 16,
@@ -29,13 +29,11 @@ class detailtext extends StatelessWidget {
             ),
 
             //
-            Container(
-              child: Gtext(
-                  text: (" :   "),
-                  tsize: 16,
-                  tcolor: Colors.black,
-                  fweight: FontWeight.w600),
-            ),
+            Gtext(
+                text: (" :   "),
+                tsize: 18,
+                tcolor: Colors.black,
+                fweight: FontWeight.w500),
 
             //farmere details
             Gtext(
