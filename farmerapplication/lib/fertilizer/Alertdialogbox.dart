@@ -19,7 +19,7 @@ class _vegedetailState extends State<vegedetail> {
   //   final videoID = YoutubePlayer.convertUrlToId(videoURL);
   //   _controller = YoutubePlayerController(
   //     initialVideoId: videoID.toString(),
-  //     flags: YoutubePlayerFlags(autoPlay: false),
+  //     flags: YoutubePlayerFlags(autoPlay: true),
   //   );
   // }
 

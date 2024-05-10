@@ -11,7 +11,9 @@ const String SUBCOLLECTION_NAME =
 class FarmerSubDatabaseServices {
   final _firestore = FirebaseFirestore.instance;
   late final CollectionReference _farmerRef;
+
   String? get FID => FirebaseAuth.instance.currentUser?.uid;
+
   final _auth = FirebaseAuth.instance;
 
   FarmerSubDatabaseServices() {
@@ -22,7 +24,7 @@ class FarmerSubDatabaseServices {
     String? email = _auth.currentUser?.email;
     return _firestore
         .collection(FARMER_COLLECTION_REF)
-        .doc('ASikrj0SB1u9f6O9aNOh')
+        .doc(FID)
         .collection(SUBCOLLECTION_NAME)
         .snapshots();
   }
