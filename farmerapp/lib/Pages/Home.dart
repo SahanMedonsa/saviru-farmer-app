@@ -2,6 +2,7 @@ import 'package:farmerapp/Components/Colorpallet.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -26,11 +27,15 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               Text(
                 "S A V I R U",
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.w700),
+                style: GoogleFonts.poppins(
+                  fontSize: 30,
+                  fontWeight: FontWeight.w700,
+                ),
               ),
               Text(
                 "ගොවියාගෙ හිත මිතු​රා",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                style: GoogleFonts.poppins(
+                    fontSize: 20, fontWeight: FontWeight.bold),
               ),
               SizedBox(
                 height: 25,
@@ -93,7 +98,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           children: [
                             Text(
                               "Farming",
-                              style: TextStyle(
+                              style: GoogleFonts.poppins(
                                   fontSize: 20, fontWeight: FontWeight.w600),
                             ),
                             ElevatedButton.icon(
@@ -109,7 +114,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         Text(
                           "Farming is a fundamental practice that involves cultivating land, raising crops, and rearing livestock for food, fiber, and other essential resources. It plays a crucial role in providing sustenance and livelihoods to communities around the world. Farming practices vary widely based on geography, climate, and cultural traditions.",
-                          style: TextStyle(
+                          style: GoogleFonts.poppins(
                               fontSize: 18, fontWeight: FontWeight.w500),
                           textAlign: TextAlign.left,
                           overflow: TextOverflow.fade,
@@ -124,14 +129,18 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               Text(
                 "Vision & Mission",
-                style: TextStyle(fontSize: 25, fontWeight: FontWeight.w700),
+                style: GoogleFonts.poppins(
+                    fontSize: 25, fontWeight: FontWeight.w700),
               ),
               SizedBox(
                 height: 25,
               ),
-              const Text(
+              Text(
                 "Our project aims to uplift the living conditions of farmers in Sri Lanka by establishing a system that empowers them to sell their cultivated vegetables at controlled prices, ensuring fairness and stability in agricultural trade. Simultaneously, we seek to enable customers to access these vegetables at subsidized prices, mitigating price fluctuations and promoting affordability. By fostering a transparent and equitable marketplace, our initiative contributes to enhancing Sri Lanka's agricultural sector, promoting economic development, food security, and sustainability while supporting the livelihoods of farmers and improving access to nutritious produce for consumers.",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                style: GoogleFonts.poppins(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w500,
+                ),
                 textAlign: TextAlign.center,
               ),
             ],

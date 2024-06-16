@@ -1,7 +1,11 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:farmerapp/Components/Colorpallet.dart';
-
+import 'package:farmerapp/Components/Gtext.dart';
+import 'package:farmerapp/vegestatus/cabbagestatus.dart';
+import 'package:farmerapp/vegestatus/capcicum.dart';
+import 'package:farmerapp/vegestatus/carrot.dart';
+import 'package:farmerapp/vegestatus/potato.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class VegeStatScreen extends StatefulWidget {
   final Map data;
@@ -13,36 +17,50 @@ class VegeStatScreen extends StatefulWidget {
 }
 
 class _VegeStatScreenState extends State<VegeStatScreen> {
-  late DocumentReference _documentReference;
-  late CollectionReference _referenceBlog;
-
-  @override
-  void initState() {
-    super.initState();
-    _documentReference =
-        FirebaseFirestore.instance.collection('Blog').doc(widget.data['id']);
-    _referenceBlog = _documentReference.collection('dailyCollection');
-  }
-
   @override
   Widget build(BuildContext context) {
-    TextEditingController cropname = TextEditingController();
+    // Get today's date
+    String todayDate = DateFormat('yMMMMd').format(DateTime.now());
+
     return Scaffold(
-        backgroundColor: ColorPalette.forest_Green.withOpacity(0.2),
-        appBar: AppBar(
-          title: Text('Vegetable Status'),
+      backgroundColor: ColorPalette.forest_Green.withOpacity(0.2),
+      appBar: AppBar(
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Gtext(
+                text: "Vege Status",
+                tsize: 20,
+                tcolor: Colors.black,
+                fweight: FontWeight.w500),
+            Gtext(
+                text: todayDate,
+                tsize: 16,
+                tcolor: Colors.black,
+                fweight: FontWeight.w400),
+          ],
         ),
-        body: Column(children: [
-          TextField(
-            controller: cropname,
-          ),
-          ElevatedButton(
-            onPressed: () {
-              Map<String, String> collectionadd = {'crop name': cropname.text};
-              _referenceBlog.add(collectionadd);
-            },
-            child: Text('Add Entry'),
-          ),
-        ]));
+      ),
+      body: Padding(
+        padding: const EdgeInsets.only(top: 15, left: 10, right: 5),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Gtext(
+                text: "Today best price",
+                tsize: 18,
+                tcolor: Colors.black,
+                fweight: FontWeight.w500),
+            SizedBox(
+              height: 30,
+            ),
+            carrotStatus(),
+            cabbagestatus(),
+            capcicumStatus(),
+            potatostatus()
+          ],
+        ),
+      ),
+    );
   }
 }

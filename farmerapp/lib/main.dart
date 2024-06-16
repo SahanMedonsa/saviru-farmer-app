@@ -5,9 +5,10 @@ import 'package:farmerapp/firebase_options.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 Future<void> main() async {
-  //widget buinding
+  //widget binding
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -30,22 +31,25 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       theme: ThemeData(
-          appBarTheme: const AppBarTheme(
-              color: ColorPalette.forest_Green,
-              iconTheme: IconThemeData(color: Colors.white)),
-          bottomNavigationBarTheme: BottomNavigationBarThemeData(
-              backgroundColor: Colors.amber,
-              selectedIconTheme:
-                  IconThemeData(color: ColorPalette.appBar_color),
-              unselectedIconTheme:
-                  IconThemeData(color: ColorPalette.Jungle_Green))),
+        appBarTheme: AppBarTheme(
+          titleTextStyle: GoogleFonts.poppins(
+            textStyle: const TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.w600,
+              color: Colors.black,
+            ),
+          ),
+          color: ColorPalette.forest_Green,
+          iconTheme: const IconThemeData(color: Colors.white),
+        ),
+        bottomNavigationBarTheme: BottomNavigationBarThemeData(
+          backgroundColor: Colors.amber,
+          selectedIconTheme: IconThemeData(color: ColorPalette.appBar_color),
+          unselectedIconTheme: IconThemeData(color: ColorPalette.Jungle_Green),
+        ),
+      ),
       debugShowCheckedModeBanner: false,
       routerConfig: AppNavigation.router,
-      // home: Scaffold(
-      //   body: _screens[_currentIndex],
-      //   bottomNavigationBar: CustomBottomNavigationBar(
-      //       currentIndex: _currentIndex, onTap: _onTabTapped),
-      // ),
     );
   }
 }

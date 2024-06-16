@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Gtext extends StatelessWidget {
   final String text;
@@ -18,7 +19,7 @@ class Gtext extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: TextStyle(
+      style: GoogleFonts.poppins(
         fontSize: tsize,
         color: tcolor,
         fontWeight: fweight,
