@@ -1,53 +1,18 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:farmerapp/Components/Colorpallet.dart';
+import 'package:flutter/material.dart';
 
-class DailyCollection {
-  Timestamp collectedDate;
-  String type;
-  String vege;
-  int amount;
-  int expectedPrice;
+class DailyCollection extends StatefulWidget {
+  const DailyCollection({super.key});
 
-  DailyCollection({
-    required this.collectedDate,
-    required this.type,
-    required this.vege,
-    required this.amount,
-    required this.expectedPrice,
-  });
+  @override
+  State<DailyCollection> createState() => _incomeState();
+}
 
-  factory DailyCollection.fromJson(Map<String, dynamic> json) {
-    return DailyCollection(
-      collectedDate: json['collectedDate'] as Timestamp,
-      type: json['type'] as String? ?? '',
-      vege: json['vege'] as String? ?? '',
-      amount: json['amount'] as int? ?? 0,
-      expectedPrice: json['expectedPrice'] as int? ?? 0,
+class _incomeState extends State<DailyCollection> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: ColorPalette.forest_Green.withOpacity(0.2),
     );
-  }
-
-  DailyCollection copyWith({
-    Timestamp? collectedDate,
-    String? type,
-    String? vege,
-    int? amount,
-    int? expectedPrice,
-  }) {
-    return DailyCollection(
-      collectedDate: collectedDate ?? this.collectedDate,
-      type: type ?? this.type,
-      vege: vege ?? this.vege,
-      amount: amount ?? this.amount,
-      expectedPrice: expectedPrice ?? this.expectedPrice,
-    );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      'collectedDate': collectedDate,
-      'type': type,
-      'vege': vege,
-      'amount': amount,
-      'expectedPrice': expectedPrice,
-    };
   }
 }

@@ -14,34 +14,38 @@ class detailtext extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            //details
-            Container(
-              width: width * 0.4,
-              child: Gtext(
-                  text: ("$detail"),
+        child: Padding(
+          padding: const EdgeInsets.only(bottom: 15),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              //details
+              Container(
+                width: width * 0.4,
+                child: Gtext(
+                    text: ("$detail"),
+                    tsize: 16,
+                    tcolor: Colors.black,
+                    fweight: FontWeight.w700),
+              ),
+
+              //
+
+              Gtext(
+                  text: (" :   "),
+                  tsize: 18,
+                  tcolor: Colors.black,
+                  fweight: FontWeight.w500),
+
+              //farmere details
+              Gtext(
+                  text: db_datil,
                   tsize: 16,
                   tcolor: Colors.black,
-                  fweight: FontWeight.w700),
-            ),
-
-            //
-            Gtext(
-                text: (" :   "),
-                tsize: 18,
-                tcolor: Colors.black,
-                fweight: FontWeight.w500),
-
-            //farmere details
-            Gtext(
-                text: db_datil,
-                tsize: 16,
-                tcolor: Colors.black,
-                fweight: FontWeight.w500)
-          ],
+                  fweight: FontWeight.w500)
+            ],
+          ),
         ),
       ),
     );
