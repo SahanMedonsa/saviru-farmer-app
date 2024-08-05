@@ -21,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Text("Home Screen"),
       ),
       body: Padding(
-        padding: const EdgeInsets.only(top: 25, left: 10, right: 10),
+        padding: const EdgeInsets.only(top: 25, left: 10, right: 10 ,bottom: 15),
         child: SingleChildScrollView(
           child: Column(
             children: [
