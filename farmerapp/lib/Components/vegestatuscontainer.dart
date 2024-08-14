@@ -18,15 +18,15 @@ class StatusContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int yesPrice = int.tryParse(yesterdayprice) ?? 0;
-    int todayPrice = int.tryParse(todayprice) ?? 0;
-    int total = todayPrice - yesPrice;
+    double yesPrice = double.tryParse(yesterdayprice) ?? 0;
+    double todayPrice = double.tryParse(todayprice) ?? 0;
+    double total = todayPrice - yesPrice;
     String totalDifference;
 
     if (total < 0) {
-      totalDifference = "- Rs.${total.abs()}";
+      totalDifference = "- Rs.${total.abs().toStringAsFixed(2)}";
     } else {
-      totalDifference = "+ Rs.$total";
+      totalDifference = "+ Rs."+ total.toStringAsFixed(2);
     }
 
     return Padding(
@@ -60,9 +60,9 @@ class StatusContainer extends StatelessWidget {
               ),
             ),
             SizedBox(
-              width: 100,
+              width: 120,
               child: Gtext(
-                text: "Rs. $todayPrice/-",
+                text: "Rs. $todayPrice",
                 tsize: 16,
                 tcolor: Colors.black,
                 fweight: FontWeight.w500,
