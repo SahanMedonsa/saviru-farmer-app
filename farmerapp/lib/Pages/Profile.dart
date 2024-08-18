@@ -55,7 +55,7 @@ class _ProfilescreenState extends State<Profilescreen> {
                 child: TabBarView(
                   children: [
                     // Contents of Tab 1
-                    income(),
+                    Income(),
                     // Contents of Tab 2
                     DailyCollection(),
                     // Contents of Tab 3

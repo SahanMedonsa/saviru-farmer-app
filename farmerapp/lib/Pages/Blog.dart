@@ -44,7 +44,7 @@ class _BlogScreenState extends State<BlogScreen> {
 
                 return Card(
                   child: ExpansionTile(
-                      initiallyExpanded: index == 0,
+                      initiallyExpanded: index == 0,        
                     title: Text(
                       blog.Title,
                       style: TextStyle(fontWeight: FontWeight.bold),

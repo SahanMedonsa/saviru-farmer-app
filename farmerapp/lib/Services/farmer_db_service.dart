@@ -25,27 +25,12 @@ class FarmerDatabaseServices {
     return _faremerRef.where('mail', isEqualTo: email ?? '').snapshots();
   }
 
-  // Stream<DocumentSnapshot<Object?>> getFarmerById(String farmerId) {
-  //   return _faremerRef.doc(farmerId).snapshots();
-  // }
+    Stream<QuerySnapshot> getDailyCollections(String farmerId) {
+    return _faremerRef
+        .doc(farmerId)
+        .collection('Daily Collection')
+        .snapshots();
+  }
 
-  // //get todo from database
-  // Stream<QuerySnapshot<Object?>> getfarmer() {
-  //   return _faremerRef.snapshots();
-  // }
-
-  // //add todo to databse
-  // void addfarmer(Farmer farmer) async {
-  //   _faremerRef.add(farmer);
-  // }
-
-  // //update todo
-  // void updatefarmer(String farmerId, Farmer farmer) {
-  //   _faremerRef.doc(farmerId).update(farmer.toJson());
-  // }
-
-  // //deleted todo
-  // void deletefarmer(String farmerId) {
-  //   _faremerRef.doc(farmerId).delete();
-  // }
+  
 }

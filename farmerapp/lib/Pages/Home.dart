@@ -1,7 +1,8 @@
+ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:farmerapp/Components/Colorpallet.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:carousel_slider/carousel_slider.dart';
+
 import 'package:google_fonts/google_fonts.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -40,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
               SizedBox(
                 height: 25,
               ),
-              CarouselSlider(
+               CarouselSlider(
                 items: [
                   'assets/1.jpeg',
                   'assets/2.jpeg',

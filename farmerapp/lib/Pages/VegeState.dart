@@ -4,10 +4,7 @@ import 'package:farmerapp/Components/Gtext.dart';
 import 'package:farmerapp/Components/vegestatuscontainer.dart';
 import 'package:farmerapp/Models/Vegestatusmodel.dart';
 import 'package:farmerapp/Services/vegestatus_service.dart';
-import 'package:farmerapp/vegestatus/cabbagestatus.dart';
-import 'package:farmerapp/vegestatus/capcicum.dart';
-import 'package:farmerapp/vegestatus/carrot.dart';
-import 'package:farmerapp/vegestatus/potato.dart';
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -36,7 +33,7 @@ class _VegeStatScreenState extends State<VegeStatScreen> {
 
     // Calculate yesterday's date
     DateTime today = DateTime.now();
-    DateTime yesterday = today.subtract(Duration(days: 2));
+    DateTime yesterday = today.subtract(Duration(days: 6));
 
     return Scaffold(
         backgroundColor: ColorPalette.forest_Green.withOpacity(0.2),
