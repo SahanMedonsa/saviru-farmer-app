@@ -15,6 +15,7 @@ class _FarmerPersonalDetailsState extends State<FarmerPersonalDetails> {
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
     return Container(
       color: Colors.green.withOpacity(0.2),
       padding: const EdgeInsets.all(15.0),
@@ -29,7 +30,7 @@ class _FarmerPersonalDetailsState extends State<FarmerPersonalDetails> {
             ),
             SizedBox(height: 15),
             SizedBox(
-              height: 500,
+              height:height ,
               child: StreamBuilder<QuerySnapshot>(
                 stream: _farmerDatabase.getfarmers(),
                 builder: (context, snapshot) {
@@ -68,7 +69,7 @@ class _FarmerPersonalDetailsState extends State<FarmerPersonalDetails> {
                   int profit1kg = userData['profite1kg'] ?? 0;
         
                   return Padding(
-                    padding: EdgeInsets.all(16.0),
+                    padding: EdgeInsets.all(8.0),
                     child: SingleChildScrollView(
                       scrollDirection: Axis.vertical,
                       child: Column(
