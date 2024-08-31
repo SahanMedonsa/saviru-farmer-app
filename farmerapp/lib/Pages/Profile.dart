@@ -46,7 +46,7 @@ class _ProfilescreenState extends State<Profilescreen> {
                   unselectedLabelColor: ColorPalette.appBar_color,
                   tabs: [
                     Tab(text: 'Income'),
-                    Tab(text: 'Collection'),
+                    Tab(text: 'Fertilizer Bill'),
                     Tab(text: 'Profile'),
                   ],
                 ),

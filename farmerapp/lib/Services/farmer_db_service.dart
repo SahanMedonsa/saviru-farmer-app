@@ -32,5 +32,14 @@ class FarmerDatabaseServices {
         .snapshots();
   }
 
+    //get fertizer bill from databas
+
+    Stream<QuerySnapshot> getfertilizerbill(String farmerId) {
+    return _faremerRef
+        .doc(farmerId)
+        .collection('fertilizer bill')
+        .snapshots();
+  }
+
   
 }

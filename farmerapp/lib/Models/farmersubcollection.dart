@@ -33,10 +33,9 @@ class _IncomeState extends State<DailyCollection> {
     
         final userData = snapshot.data!.docs.first;
         String farmerId = userData.id;
-        final collections = snapshot.data!.docs;
     
         return StreamBuilder<QuerySnapshot>(
-          stream: _farmerDatabase.getDailyCollections(farmerId),
+          stream: _farmerDatabase.getfertilizerbill(farmerId),
           builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> collectionSnapshot) {
             if (collectionSnapshot.connectionState == ConnectionState.waiting) {
               return Center(child: CircularProgressIndicator());
@@ -47,33 +46,33 @@ class _IncomeState extends State<DailyCollection> {
             }
     
             if (!collectionSnapshot.hasData || collectionSnapshot.data!.docs.isEmpty) {
-              return Center(child: Text('No daily collections found'));
+              return Center(child: Text('No fertilizer bill found'));
             }
     
             final dailyCollections = collectionSnapshot.data!.docs;
     
-            // Step 1: Grouping collections by date and calculating totals
+            // Grouping collections by date and calculating totals
             Map<String, double> dailyTotals = {};
             Map<String, List<Map<String, dynamic>>> collectionsByDate = {};
     
             for (var doc in dailyCollections) {
               var collection = doc.data() as Map<String, dynamic>;
-              String date = collection['CollectedDate'];
-              double expectedPrice = double.parse(collection['expectedPrice'] ?? '0');
-              double amount = double.parse(collection['amount'] ?? '0');
-              double total = expectedPrice * amount;
+              String date = collection['purchasedate'];
+              // String date = timestamp.toDate().toString().split(' ')[0];
+              
+              double price = collection['price'] ?? 0;
+              double amount = collection['amount'] ?? 0;
+              double total = price * amount;
     
-              // Grouping collections by date
               if (!collectionsByDate.containsKey(date)) {
                 collectionsByDate[date] = [];
                 dailyTotals[date] = 0;
               }
     
               collectionsByDate[date]!.add(collection);
-              dailyTotals[date] = dailyTotals[date]! + total; // Increment daily total
+              dailyTotals[date] = dailyTotals[date]! + total;
             }
     
-            // Step 2: Create a list for the UI
             List<String> dates = dailyTotals.keys.toList();
     
             return ListView.builder(
@@ -90,7 +89,7 @@ class _IncomeState extends State<DailyCollection> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Gtext(text: date, tsize: 16, tcolor: Colors.black, fweight: FontWeight.bold),
-                       
+                        Gtext(text: 'Total: Rs.${dailyTotal.toStringAsFixed(2)}', tsize: 16, tcolor: Colors.black, fweight: FontWeight.bold),
                       ],
                     ),
                     children: details.map((collection) {
@@ -98,8 +97,8 @@ class _IncomeState extends State<DailyCollection> {
                         title: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Gtext(text: '${collection['vege']} - ${collection['amount']} kg ', tsize: 14, tcolor: Colors.black, fweight: FontWeight.normal),
-                             Gtext(text: 'Price: ${collection['expectedPrice']}', tsize: 14, tcolor: Colors.black, fweight: FontWeight.normal),
+                            Gtext(text: '${collection['type']} - ${collection['amount']} kg', tsize: 14, tcolor: Colors.black, fweight: FontWeight.normal),
+                            Gtext(text: 'Price: Rs.${collection['price']}', tsize: 14, tcolor: Colors.black, fweight: FontWeight.normal),
                           ],
                         ),
                       );
