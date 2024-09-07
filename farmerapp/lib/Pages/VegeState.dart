@@ -33,7 +33,7 @@ class _VegeStatScreenState extends State<VegeStatScreen> {
 
     // Calculate yesterday's date
     DateTime today = DateTime.now();
-    DateTime yesterday = today.subtract(Duration(days: 6));
+    DateTime yesterday = today.subtract(Duration(days: 1));
 
     return Scaffold(
         backgroundColor: ColorPalette.forest_Green.withOpacity(0.2),

@@ -83,33 +83,36 @@ class _IncomeState extends State<Income> {
                 double dailyTotal = dailyTotals[date] ?? 0;
                 List<Map<String, dynamic>> details = collectionsByDate[date] ?? [];
     
-                return Card(
-                  margin: EdgeInsets.symmetric(vertical: 8.0),
-                  child: ExpansionTile(
-                    title: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Gtext(text: date, tsize: 16, tcolor: Colors.black, fweight: FontWeight.bold),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Gtext(text: 'Daily Total: ', tsize: 12, tcolor: Colors.black, fweight: FontWeight.normal),
-                              Gtext(text: 'Rs.${dailyTotal.toStringAsFixed(2)}', tsize: 16, tcolor: Colors.black, fweight: FontWeight.bold),
-                          ],
-                        ),
-                      ],
+                return Padding(
+                  padding: const EdgeInsets.only(left: 10, right: 10),
+                  child: Card(
+                    margin: EdgeInsets.symmetric(vertical: 8.0),
+                    child: ExpansionTile(
+                      title: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Gtext(text: date, tsize: 16, tcolor: Colors.black, fweight: FontWeight.bold),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Gtext(text: 'Daily Total: ', tsize: 12, tcolor: Colors.black, fweight: FontWeight.normal),
+                                Gtext(text: 'Rs.${dailyTotal.toStringAsFixed(2)}', tsize: 16, tcolor: Colors.black, fweight: FontWeight.bold),
+                            ],
+                          ),
+                        ],
+                      ),
+                      children: details.map((collection) {
+                        return ListTile(
+                          title: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Gtext(text: '${collection['vege']} - ${collection['amount']} kg * ${collection['expectedPrice']}', tsize: 14, tcolor: Colors.black, fweight: FontWeight.normal),
+                              Gtext(text: 'Price: Rs.${(double.parse(collection['expectedPrice'] ?? '0') * double.parse(collection['amount'] ?? '0')).toStringAsFixed(2)}', tsize: 14, tcolor: Colors.black, fweight: FontWeight.normal),
+                            ],
+                          ),
+                        );
+                      }).toList(),
                     ),
-                    children: details.map((collection) {
-                      return ListTile(
-                        title: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Gtext(text: '${collection['vege']} - ${collection['amount']} kg * ${collection['expectedPrice']}', tsize: 14, tcolor: Colors.black, fweight: FontWeight.normal),
-                            Gtext(text: 'Price: Rs.${(double.parse(collection['expectedPrice'] ?? '0') * double.parse(collection['amount'] ?? '0')).toStringAsFixed(2)}', tsize: 14, tcolor: Colors.black, fweight: FontWeight.normal),
-                          ],
-                        ),
-                      );
-                    }).toList(),
                   ),
                 );
               },

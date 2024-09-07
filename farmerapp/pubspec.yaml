@@ -45,6 +45,7 @@ dependencies:
   google_fonts: ^6.2.1
   carousel_slider: ^5.0.0
   cloud_firestore: ^5.2.1
+  flutter_launcher_icons: ^0.13.1
 
 dev_dependencies:
   flutter_test:
@@ -96,3 +97,8 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/logo.png"
